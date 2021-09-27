@@ -3,6 +3,7 @@ import store from './store';
 import axios from 'axios'
 import './mock/mock'
 import actionCreator from './store/actionCreator'
+import { TodoList } from './TodoList';
 class App extends Component {
     constructor(props) {
         super(props);
@@ -37,29 +38,12 @@ class App extends Component {
         store.dispatch(action)
     }
     render() { 
-        return ( <div>
-            <div style={{ width: '220px'}}>
-            <input type='text' onChange={this.inputValueChange} value={this.state.inputValue}/> 
-            <button type='primary' onClick={this.additem}>添加</button>
-            </div>
-            <div style={{ width: '169px'}}>
-            <ul>
-                {this.state.data.map(
-                    (value, index)=>(
-                        <li  style={{cursor:'pointer'}} 
-                        key={index} 
-                        onMouseEnter={(event)=>{
-                            event.target.style.color = 'red'
-                        }}
-                        onMouseOut={(event)=>{
-                            event.target.style.color = ''
-                        }}
-                        onClick={()=>{this.deleteItem(index)}}>{value}</li>
-                    )
-                )}
-            </ul>
-            </div>
-        </div> );
+        return <TodoList 
+            inputValueChange={this.inputValueChange} 
+            state={this.state}
+            additem={this.additem}
+            deleteItem={this.deleteItem}
+         />
     }
 }
  
