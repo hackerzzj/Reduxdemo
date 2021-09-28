@@ -12,14 +12,22 @@ class App extends Component {
         this.state = store.getState();
         
     }
+    a() {
+        console.log('执行a函数')
+    }
+    b(){
+        console.log('执行b函数')
+    }
     componentDidMount(){
+        // 定义在这里不会报警告
         store.subscribe(this.updateState)
-        axios.get('http://mockdata.reduxdemo.com').then(
-            res => {
-                let action  = actionCreator.getListAction(res.data.data)
-                store.dispatch(action)
-            }
-        )
+        store.dispatch(actionCreator.getList())
+        // axios.get('http://mockdata.reduxdemo.com').then(
+        //     res => {
+        //         let action  = actionCreator.getListAction(res.data.data)
+        //         store.dispatch(action)
+        //     }
+        // )
     }
     updateState(){
         this.setState(store.getState())

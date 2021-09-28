@@ -1,4 +1,6 @@
+import axios from '_axios@0.21.4@axios'
 import actionTypes from './actinType'
+import store from './index'
 const getListAction = function (data=[]) {
     return {
         type: actionTypes.GET_LIST,
@@ -22,8 +24,18 @@ const deleteitemAction = function (data = 0) {
         data
     }
 }
+const getList = function(){
+    return function(){
+        axios.get('http://mockdata.reduxdemo.com').then(
+            res => {
+                let action  = getListAction(res.data.data)
+                store.dispatch(action)
+            }
+        )
+    }
+}
 const creator = {
-    getListAction,
+    getList,
     inputValueAction,
     additemAction,
     deleteitemAction
