@@ -22,10 +22,14 @@ const deleteitemAction = function (data = 0) {
         data
     }
 }
+const getMyListAction = ()=>({
+    type: actionTypes.GET_MY_LIST
+})
 const creator = {
     getListAction,
     inputValueAction,
     additemAction,
-    deleteitemAction
+    deleteitemAction,
+    getMyListAction
 }
 export default creator

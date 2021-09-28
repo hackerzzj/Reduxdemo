@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import store from './store';
-import axios from 'axios'
 import './mock/mock'
 import actionCreator from './store/actionCreator'
 import { TodoList } from './TodoList';
@@ -14,12 +13,8 @@ class App extends Component {
     }
     componentDidMount(){
         store.subscribe(this.updateState)
-        axios.get('http://mockdata.reduxdemo.com').then(
-            res => {
-                let action  = actionCreator.getListAction(res.data.data)
-                store.dispatch(action)
-            }
-        )
+        const mylistaction = actionCreator.getMyListAction()
+        store.dispatch(mylistaction)
     }
     updateState(){
         this.setState(store.getState())

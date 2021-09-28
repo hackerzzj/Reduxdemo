@@ -2,10 +2,12 @@ export const CHANG_INPUT = 'changinput'
 export const ADD_ITEM = 'additme'
 export const DELETE_ITEM = 'deleteitme'
 export const GET_LIST = 'getList'
+export const GET_MY_LIST = 'getmylist'
 const TYPES = {
     CHANG_INPUT,
     ADD_ITEM,
     DELETE_ITEM,
-    GET_LIST
+    GET_LIST,
+    GET_MY_LIST
 }
 export default TYPES
