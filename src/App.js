@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import store from './store';
-import axios from 'axios'
 import './mock/mock'
 import actionCreator from './store/actionCreator'
 import { TodoList } from './TodoList';
