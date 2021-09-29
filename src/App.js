@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div style={{width:'300px'}}>
+        <input value={props.inputValue} onChange={props.inputChange}/>
+        <button onClick={props.clickButton}>添加</button>
+      </div>
+      <div style={{width:'300px'}}>
+        <ul>
+          {props.list.map((value,index)=>{
+            return <li key={index} onClick={()=>{props.deleitem(index)}}>{value}</li>
+          })}
+        </ul>
     </div>
+  </div>
   );
 }
 
